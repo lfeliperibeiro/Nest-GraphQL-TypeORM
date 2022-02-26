@@ -1,12 +1,17 @@
 import { ObjectType } from '@nestjs/graphql';
 import { BaseDTO } from '../../bases/dto/base.dto';
-import { FilterableField } from '@nestjs-query/query-graphql';
+import {
+  FilterableField,
+  FilterableRelation,
+} from '@nestjs-query/query-graphql';
+import { LessonDTO } from '../../lessons/dto/lesson.dto';
 
 @ObjectType('Content')
+@FilterableRelation('lesson', () => LessonDTO)
 export class ContentDTO extends BaseDTO {
-  @FilterableField()
+  @FilterableField({ nullable: true })
   description: string;
 
-  @FilterableField()
+  @FilterableField({ nullable: true })
   linkContent: string;
 }

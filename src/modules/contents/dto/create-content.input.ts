@@ -7,4 +7,7 @@ export class CreateContentInput {
 
   @Field(() => String, { nullable: true })
   linkContent?: string;
+
+  @Field(() => String, { nullable: true })
+  lessonId: string;
 }
